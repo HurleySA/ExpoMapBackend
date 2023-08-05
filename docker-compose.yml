@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  database:
+    container_name: prisma-postgres
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=prisma-postgres
+  database_test:
+    container_name: prisma-postgres-test
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=prisma
+      - POSTGRES_PASSWORD=prisma
+      - POSTGRES_DB=prisma-postgres-test
+    ports:
+      - '5433:5432'
