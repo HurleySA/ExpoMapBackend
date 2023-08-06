@@ -9,3 +9,77 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+enum State {
+  AL
+  BA
+  PB
+  RN
+  CE
+  MA
+  PE
+  PI
+  SE
+}
+
+enum EventType {
+  FREE
+  PAID
+  HYBRID
+}
+
+model Address {
+  id           String  @id @default(uuid())
+  city         String
+  state        State
+  street       String
+  neighborhood String
+  number       String
+  latitude     Float
+  longitude    Float
+  Event        Event[]
+}
+
+model Event {
+  id                       String     @id @default(uuid())
+  name                     String
+  startDate                String
+  endDate                  String
+  openningHour             String
+  closeHour                String
+  typeEntrance             EventType
+  valueEntrance            Int?
+  startPaymentEntranceHour String?
+  emailAdmin               String
+  phoneAdmin               String
+  sponsors                 String[]
+  hasLounge                Boolean
+  loungeBuyLink            String?
+  schedules                Schedule[]
+  Address                  Address?   @relation(fields: [addressId], references: [id])
+  addressId                String?
+  createdAt                DateTime   @default(now())
+  updatedAt                DateTime   @updatedAt
+}
+
+model Show {
+  id         String    @id @default(uuid())
+  band       String
+  hour       String?
+  Schedule   Schedule? @relation(fields: [scheduleId], references: [id])
+  scheduleId String?
+}
+
+model Schedule {
+  id      String  @id @default(uuid())
+  date    String
+  shows   Show[]
+  Event   Event?  @relation(fields: [eventId], references: [id])
+  eventId String?
+}
+
+model FrequencyQuestion {
+  id       String @id @default(uuid())
+  question String
+  answer   String
+}
