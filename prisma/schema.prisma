@@ -37,7 +37,7 @@ enum StatusType {
 model Address {
   id           String  @id @default(uuid())
   city         String
-  state        State
+  state        State?
   street       String
   neighborhood String
   number       String

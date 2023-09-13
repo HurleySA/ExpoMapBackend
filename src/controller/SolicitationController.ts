@@ -1,6 +1,6 @@
 
 import { Request, Response } from "express";
- import { AppError } from "../erros/AppError";
+import { AppError } from "../erros/AppError";
 import { ICreateSolicitation, IUpdateSolicitation } from "../helpers/dto"; 
 import { SolicitationService } from "../services/SolicitationService";
 
