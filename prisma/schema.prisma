@@ -28,6 +28,12 @@ enum EventType {
   HYBRID
 }
 
+enum StatusType {
+  PENDING
+  ACCEPTED
+  REJECTED
+}
+
 model Address {
   id           String  @id @default(uuid())
   city         String
@@ -82,4 +88,14 @@ model FrequencyQuestion {
   id       String @id @default(uuid())
   question String
   answer   String
+}
+
+model EventSolicitation {
+  id           String     @id @default(uuid())
+  eventName    String
+  typeEntrance EventType
+  emailAdmin   String
+  phoneAdmin   String
+  detailsEvent String
+  status       StatusType @default(PENDING)
 }

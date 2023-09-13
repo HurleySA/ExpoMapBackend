@@ -7,6 +7,7 @@ const solicitationController = new SolicitationController();
 
 solicitationRoutes.post('/', solicitationController.createSolicitation)
 solicitationRoutes.get('/', solicitationController.listSolicitations)
+solicitationRoutes.get('/:solicitation_id', solicitationController.getSolicitation)
 solicitationRoutes.put('/:solicitation_id', solicitationController.updateSolicitation)
 solicitationRoutes.delete('/:solicitation_id', solicitationController.deleteSolicitation);
 

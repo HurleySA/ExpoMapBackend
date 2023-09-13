@@ -55,6 +55,23 @@ export class SolicitationController {
                 return response.status(500).json({error: errorMessage});
         }
     }
+
+    async getSolicitation(request: Request, response: Response): Promise<Response> {
+        try{
+            const { solicitation_id }  = request.params;
+            const solicitation = await solicitationService.getSolicitation(solicitation_id);
+            return response.status(200).send(solicitation);
+        
+          }catch(err){
+            if(err instanceof AppError){
+                return response.status(err.statusCode).json({error: err.message});
+            }else if(err instanceof Error){
+                return response.status(500).json({error: err.message});
+            }
+            const errorMessage = "Failed to do something exceptional"
+                return response.status(500).json({error: errorMessage});
+          }
+    }
     async createSolicitation(request: Request, response: Response): Promise<Response> {
         try{
             const  { eventName, typeEntrance, phoneAdmin,emailAdmin, detailsEvent }: ICreateSolicitation = request.body;

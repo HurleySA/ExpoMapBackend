@@ -1,6 +1,16 @@
+
+interface IEventSolicitation {
+    id: string
+    eventName: string,
+    typeEntrance: 'FREE' | 'PAID' | 'HYBRID',
+    emailAdmin: string,
+    phoneAdmin: string,
+    detailsEvent: string,
+    status: 'PENDING' | 'ACCEPTED' | 'REJECTED'
+}
 interface ICreateSolicitation {
     "eventName": string;
-    "typeEntrance": 'free' | 'paid' | 'hybrid';
+    "typeEntrance": 'FREE' | 'PAID' | 'HYBRID';
     "emailAdmin": string;
     "phoneAdmin": string;
     "detailsEvent": string;
@@ -8,10 +18,10 @@ interface ICreateSolicitation {
 
 interface IUpdateSolicitation {
     "eventName"?: string;
-    "typeEntrance"?: 'free' | 'paid' | 'hybrid';
+    "typeEntrance"?: 'FREE' | 'PAID' | 'HYBRID';
     "emailAdmin"?: string;
     "phoneAdmin"?: string;
     "detailsEvent"?: string;
 }
 
-export { ICreateSolicitation, IUpdateSolicitation };
+export { ICreateSolicitation, IUpdateSolicitation, IEventSolicitation };

@@ -1,0 +1,2 @@
+-- CreateEnum
+CREATE TYPE "StatusType" AS ENUM ('PENDING', 'ACCEPTED', 'REJECTED');
