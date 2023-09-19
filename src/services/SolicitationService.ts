@@ -1,9 +1,30 @@
 import { prismaClient } from "../database/prismaClient";
 import { AppError } from "../erros/AppError";
 import { ICreateSolicitation, IEventSolicitation } from "../helpers/dto";
+import { sendEmail } from "../helpers/nodemail";
 import { schemaCreateSolicitation, schemaUpdateSolicitation } from "../helpers/schemas";
 
 class SolicitationService {
+    async acceptSolicitation(solicitation_id: string): Promise<any> {
+       const solicitation = await prismaClient.eventSolicitation.findUnique({
+            where:{
+                id:solicitation_id
+            }
+        })
+        if(!solicitation){
+            throw new AppError("Solicitation not found.", 404);
+        }
+        const newSolicitation = await prismaClient.eventSolicitation.update({
+            where: { id: solicitation_id },
+            data: { 
+                status: "ACCEPTED"
+            },
+        })
+
+        sendEmail(newSolicitation.emailAdmin, newSolicitation.id);
+        return newSolicitation;
+    }
+    
     async deleteSolicitation(solicitation_id: string): Promise<any> {
        const solicitation = await prismaClient.eventSolicitation.findUnique({
             where:{

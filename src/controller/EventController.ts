@@ -42,6 +42,7 @@ export class EventController {
         try{
             const  { 
                 name,
+                solicitationId,
                 city,
                 state,
                 street,
@@ -64,6 +65,7 @@ export class EventController {
                 schedules }: ICreateEvent = request.body;
             const event = await eventService.createEvent({
                 name,
+                solicitationId,
                 city,
                 state,
                 street,

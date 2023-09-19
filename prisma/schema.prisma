@@ -48,6 +48,7 @@ model Address {
 
 model Event {
   id                       String     @id @default(uuid())
+  solicitationId           String     @unique
   name                     String
   startDate                String
   endDate                  String
@@ -98,4 +99,12 @@ model EventSolicitation {
   phoneAdmin   String
   detailsEvent String
   status       StatusType @default(PENDING)
+}
+
+model User {
+  id       String  @id @default(uuid())
+  username String  @unique
+  email    String  @unique
+  password String
+  isAdmin  Boolean
 }

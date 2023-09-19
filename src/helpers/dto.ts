@@ -68,6 +68,7 @@ interface IShow {
 
 interface ICreateEvent {
     name: string;
+    solicitationId: string
     city: string,
     state: 'AL' | 'BA' | 'PB' | 'RN' | 'CE' | 'MA' | 'PE' | 'PI' | 'SE',
     street: string,
@@ -111,6 +112,26 @@ interface IUpdateEvent {
     hasLounge?: boolean,
     loungeBuyLink?: string,
     schedules?: ISchedule[]
+}
+
+//User
+export interface IUser {
+    username: string
+    email: string
+    password: string
+    isAdmin: boolean
+}
+export interface ICreateUser {
+    username: string
+    email: string
+    password: string
+    isAdmin: boolean
+}
+export interface UpdateUser {
+    username: string
+    email: string
+    password: string
+    isAdmin: boolean
 }
 
 export { ICreateSolicitation, IUpdateSolicitation, IEventSolicitation, IEvent, ICreateEvent, IUpdateEvent };
