@@ -11,6 +11,7 @@ solicitationRoutes.get('/:solicitation_id', solicitationController.getSolicitati
 solicitationRoutes.put('/:solicitation_id', solicitationController.updateSolicitation)
 solicitationRoutes.delete('/:solicitation_id', solicitationController.deleteSolicitation);
 solicitationRoutes.post('/:solicitation_id/accept', solicitationController.acceptSolicitation);
+solicitationRoutes.post('/:solicitation_id/reject', solicitationController.rejectSolicitation);
 
 
 export { solicitationRoutes };

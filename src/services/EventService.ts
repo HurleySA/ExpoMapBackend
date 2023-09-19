@@ -12,7 +12,7 @@ class EventService {
                         shows: true
                       }
                 },
-                Address: true
+                address: true
             }});
         return events;
     }
@@ -28,7 +28,7 @@ class EventService {
                         shows: true
                       }
                 },
-                Address: true
+                address: true
             }
         })
         if(!event){
@@ -113,7 +113,7 @@ class EventService {
                 sponsors,
                 hasLounge,
                 loungeBuyLink,
-                Address: {
+                address: {
                     create: {
                         city,
                         state,
@@ -265,7 +265,7 @@ class EventService {
                         shows: true
                       }
                 },
-                Address: true
+                address: true
             }
          })
 
@@ -293,7 +293,7 @@ class EventService {
                             shows: true
                           }
                     },
-                    Address: true
+                    address: true
                 }
             }) 
             return newEventWithNewSchedule;

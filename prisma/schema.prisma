@@ -63,7 +63,7 @@ model Event {
   hasLounge                Boolean
   loungeBuyLink            String?
   schedules                Schedule[]
-  Address                  Address?   @relation(fields: [addressId], references: [id])
+  address                  Address?   @relation(fields: [addressId], references: [id])
   addressId                String?
   createdAt                DateTime   @default(now())
   updatedAt                DateTime   @updatedAt
