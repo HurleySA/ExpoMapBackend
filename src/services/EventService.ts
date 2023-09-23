@@ -36,6 +36,14 @@ class EventService {
         }
         return event;
     }
+    async getEventBySolicitationId(solicitation_id: string): Promise<any>{
+        const event = await prismaClient.event.findUnique({
+            where:{
+                solicitationId: solicitation_id
+            }
+        })
+        return event;
+    }
 
     async createEvent({name,
         solicitationId,

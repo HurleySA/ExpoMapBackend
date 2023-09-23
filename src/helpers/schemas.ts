@@ -8,6 +8,14 @@ const schemaCreateSolicitation = Joi.object({
     phoneAdmin: Joi.string().required(),
     detailsEvent: Joi.string().required()
 })
+const schemaCreateSolicitationExhibitor = Joi.object({
+    name: Joi.string().min(5).required(),
+    email: Joi.string().email().required(),
+    phone: Joi.string().required(),
+    eventId: Joi.string().required(),
+    detail: Joi.string().required(),
+    workedInThePast: Joi.boolean().required(),
+})
 
 const schemaUpdateSolicitation = Joi.object({
     eventName: Joi.string().min(5),
@@ -116,4 +124,4 @@ const schemaCreateUser = Joi.object({
   });
   
 
-export { schemaCreateSolicitation, schemaUpdateSolicitation, schemaCreateEvent, schemaUpdateEvent, schemaCreateUser, schemaUpdateUser };
+export { schemaCreateSolicitation, schemaUpdateSolicitation, schemaCreateEvent, schemaUpdateEvent, schemaCreateUser, schemaUpdateUser,schemaCreateSolicitationExhibitor };

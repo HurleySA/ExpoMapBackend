@@ -16,6 +16,14 @@ interface ICreateSolicitation {
     "phoneAdmin": string;
     "detailsEvent": string;
 }
+interface ICreateSolicitationExhibitor {
+    "name": string;
+    "email": string;
+    "phone": string;
+    "eventId": string;
+    "detail": string;
+    "workedInThePast": boolean;
+}
 
 interface IUpdateSolicitation {
     "eventName"?: string;
@@ -134,4 +142,4 @@ export interface UpdateUser {
     isAdmin: boolean
 }
 
-export { ICreateSolicitation, IUpdateSolicitation, IEventSolicitation, IEvent, ICreateEvent, IUpdateEvent };
+export { ICreateSolicitation, IUpdateSolicitation, IEventSolicitation, IEvent, ICreateEvent, IUpdateEvent, ICreateSolicitationExhibitor };

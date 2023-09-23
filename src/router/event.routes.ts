@@ -8,6 +8,7 @@ const eventController = new EventController();
 eventRoutes.get('/', eventController.listEvent)
 eventRoutes.post('/', eventController.createEvent)
 eventRoutes.get('/:event_id', eventController.getEvent)
+eventRoutes.get('/solicitation/:solicitation_id', eventController.getEventBySolicitationId)
 eventRoutes.put('/:event_id', eventController.updateEvent)
 eventRoutes.delete('/:event_id', eventController.deleteEvent);
 

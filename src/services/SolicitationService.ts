@@ -1,8 +1,8 @@
 import { prismaClient } from "../database/prismaClient";
 import { AppError } from "../erros/AppError";
-import { ICreateSolicitation, IEventSolicitation } from "../helpers/dto";
-import { sendEmail, sendRejectEmail } from "../helpers/nodemail";
-import { schemaCreateSolicitation, schemaUpdateSolicitation } from "../helpers/schemas";
+import { ICreateSolicitation, ICreateSolicitationExhibitor, IEventSolicitation } from "../helpers/dto";
+import { sendEmail, sendEmailExhibitorSolicitation, sendRejectEmail } from "../helpers/nodemail";
+import { schemaCreateSolicitation, schemaCreateSolicitationExhibitor, schemaUpdateSolicitation } from "../helpers/schemas";
 
 class SolicitationService {
     async acceptSolicitation(solicitation_id: string): Promise<any> {
@@ -122,6 +122,26 @@ class SolicitationService {
             }
         })    
         return solicitation;
+    }
+
+    async createSolicitationExhibitor({ detail, email, eventId, name, phone, workedInThePast }: ICreateSolicitationExhibitor): Promise<any>{
+        const validation = schemaCreateSolicitationExhibitor.validate({ detail, email, eventId, name, phone, workedInThePast },{
+            abortEarly:false
+        })
+        if(validation.error) {
+            throw new AppError(validation.error.message, 400);
+        }
+        const event = await prismaClient.event.findUnique({
+            where:{
+                id:eventId
+            }
+        })
+        if(!event){
+            throw new AppError("Event not found.", 404);
+        }
+
+        sendEmailExhibitorSolicitation(detail, email, name, phone, workedInThePast, event.emailAdmin); 
+        return null;
     }
 }
 
