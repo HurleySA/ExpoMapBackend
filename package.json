@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "ts-node-dev --exit-child --transpile-only --ignore-watch node_modules src/index.ts",
     "start": "node --loader ts-node/esm ./dist/index.js",
-    "build": "npx prisma migrate deploy && tsc"
+    "build": "npx prisma migrate deploy && tsc",
+    "vercel-build": "npx prisma migrate deploy && tsc"
   },
   "keywords": [],
   "author": "",
