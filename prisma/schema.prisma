@@ -85,12 +85,6 @@ model Schedule {
   eventId String?
 }
 
-model FrequencyQuestion {
-  id       String @id @default(uuid())
-  question String
-  answer   String
-}
-
 model EventSolicitation {
   id           String     @id @default(uuid())
   eventName    String
