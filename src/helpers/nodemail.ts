@@ -23,7 +23,7 @@ export async function sendEmail(adminEmail: string, solicitationId: string) {
         from: 'ExpoMap <expomaptcc@gmail.com>',
         to: [adminEmail],
         text: 'O cadastro do seu evento já está liberado!',
-        html: `<h1>Complete seu cadastro seguindo o link:</h1><br><a>http://localhost:5173/complete/solicitation/${solicitationId}</a>`
+        html: `<h1>Complete seu cadastro seguindo o link:</h1><br><a>https://expo-map-front.vercel.app/complete/solicitation/${solicitationId}</a>`
     })
 }
 
